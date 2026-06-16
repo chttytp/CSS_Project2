@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Liên Hệ - Di Tích Đồng Khởi Bến Tre</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- HW2 STEP 2: Skip to Main Content -->
+    <a class="skip-link" href="#main-content">Bỏ qua và đến Nội Dung Chính</a>
+
+    <header>
+        <h1>Khu Di Tích Đồng Khởi Bến Tre</h1>
+    </header>
+
+    <nav>
+        <div class="nav-inner">
+            <!-- HW2 STEP 5: Ảnh logo trong nav -->
+            <img src="images/logo.png"
+                 alt="Logo Khu Di Tích Đồng Khởi"
+                 onerror="this.onerror=null; this.src='https://upload.wikimedia.org/wikipedia/commons/thumb/2/21/Flag_of_Vietnam.svg/60px-Flag_of_Vietnam.svg.png';">
+            <ul>
+                <li><a href="index.html">Trang Chủ</a></li>
+                <li><a href="about.html">Giới Thiệu</a></li>
+                <li><a href="contact.html">Liên Hệ</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- HW2 STEP 2: id="main-content" trên thẻ main -->
+    <main id="main-content">
+        <h2>Thông Tin Liên Hệ</h2>
+
+        <p>Nếu bạn có thắc mắc hoặc muốn đặt lịch tham quan đoàn, vui lòng liên hệ với chúng tôi qua các thông tin dưới đây hoặc gửi tin nhắn qua biểu mẫu.</p>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Kênh liên hệ</th>
+                    <th>Thông tin</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Địa chỉ</td>
+                    <td>Đường Hà Huy Giáp, Xã Định Thủy, huyện Mỏ Cày Nam, tỉnh Bến Tre</td>
+                </tr>
+                <tr>
+                    <td>Điện thoại</td>
+                    <td>(+84) 913 816 762</td>
+                </tr>
+                <tr>
+                    <td>Email</td>
+                    <td>svhttdl@bentre.gov.vn</td>
+                </tr>
+                <tr>
+                    <td>Giờ làm việc</td>
+                    <td>7:00 – 17:00, Thứ Hai – Chủ Nhật</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2>Gửi Tin Nhắn Cho Chúng Tôi</h2>
+
+        <div id="form-success" class="form-notice form-success" style="display:none;">
+            ✅ Tin nhắn đã được gửi thành công! Chúng tôi sẽ phản hồi sớm nhất có thể.
+        </div>
+        <div id="form-error" class="form-notice form-error" style="display:none;">
+            ❌ Có lỗi xảy ra. Vui lòng thử lại hoặc liên hệ trực tiếp qua email.
+        </div>
+
+        <form id="contact-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+
+            <label for="hoTen">Họ và tên:</label>
+            <input type="text" id="hoTen" name="hoTen" placeholder="Nhập họ và tên của bạn" required>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" placeholder="Nhập địa chỉ email" required>
+
+            <label for="chuDe">Chủ đề:</label>
+            <select id="chuDe" name="chuDe">
+                <option value="thamquan">Đặt lịch tham quan</option>
+                <option value="thongtin">Yêu cầu thông tin</option>
+                <option value="hoptac">Hợp tác truyền thông</option>
+                <option value="khac">Khác</option>
+            </select>
+
+            <label for="noiDung">Nội dung:</label>
+            <textarea id="noiDung" name="noiDung" rows="5" placeholder="Nhập nội dung tin nhắn..." required></textarea>
+
+            <button type="submit" id="submit-btn">Gửi tin nhắn</button>
+        </form>
+
+        <script>
+            const form = document.getElementById('contact-form');
+            const successMsg = document.getElementById('form-success');
+            const errorMsg = document.getElementById('form-error');
+            const submitBtn = document.getElementById('submit-btn');
+
+            form.addEventListener('submit', async function (e) {
+                e.preventDefault();
+                submitBtn.disabled = true;
+                submitBtn.textContent = 'Đang gửi...';
+                successMsg.style.display = 'none';
+                errorMsg.style.display = 'none';
+
+                try {
+                    const response = await fetch(form.action, {
+                        method: 'POST',
+                        body: new FormData(form),
+                        headers: { 'Accept': 'application/json' }
+                    });
+
+                    if (response.ok) {
+                        successMsg.style.display = 'block';
+                        form.reset();
+                    } else {
+                        errorMsg.style.display = 'block';
+                    }
+                } catch {
+                    errorMsg.style.display = 'block';
+                } finally {
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = 'Gửi tin nhắn';
+                }
+            });
+        </script>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Khu Di Tích Đồng Khởi Bến Tre. Tất cả các quyền được bảo lưu.</p>
+    </footer>
+
+</body>
+</html>

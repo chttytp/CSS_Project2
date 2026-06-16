@@ -1,0 +1,293 @@
+/* =============================================
+   HOMEWORK 2 – Advanced Selectors and Display
+   Khu Di Tích Đồng Khởi Bến Tre
+   ============================================= */
+
+/* Skip to Main Content link (ẩn mặc định, hiện khi focus) */
+.skip-link {
+    position: absolute;
+    top: -40px;
+    left: 0;
+    background: #ffd700;
+    color: #003366;
+    padding: 8px 16px;
+    font-weight: bold;
+    text-decoration: none;
+    z-index: 1000;
+    border-radius: 0 0 4px 0;
+}
+
+.skip-link:focus {
+    top: 0;
+}
+
+/* Font chữ và cỡ chữ cho toàn trang */
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    margin: 0;
+    padding: 0;
+}
+
+/* Header */
+header {
+    background-color: #003366;
+    padding: 20px;
+    text-align: center;
+}
+
+/* ── HW2 STEP 4 ──────────────────────────────
+   Thay đổi nav sang inline-block, width ~80%
+   ─────────────────────────────────────────── */
+/* Nav full-width để màu nền trải ngang toàn trang */
+nav {
+    background-color: #004080;
+    padding: 8px 0;
+    text-align: center;
+    width: 100%;
+}
+
+/* Div bên trong nav chiếm ~80%, căn giữa */
+nav .nav-inner {
+    display: inline-block;
+    width: 80%;
+}
+
+/* ── HW2 STEP 5 ──────────────────────────────
+   Descendent selector: chỉ ảnh trong nav
+   ─────────────────────────────────────────── */
+nav img {
+    width: 10%;
+    vertical-align: middle;
+    margin-bottom: 4px;
+}
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 8px 0;
+    display: flex;           /* giữ các mục nav nằm ngang */
+    justify-content: center;
+    align-items: center;
+    gap: 32px;
+}
+
+nav a {
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+nav a:hover {
+    text-decoration: underline;
+    color: #ffd700;
+}
+
+/* ── HW2 STEP 3 ──────────────────────────────
+   Comment out rule cũ của li
+   ─────────────────────────────────────────── */
+/* nav li {
+    display: inline-block;
+    width: 150px;
+} */
+
+/* Nội dung chính */
+main {
+    background-color: #f4f4f4;
+    font-size: 18px;
+    padding: 20px 40px;
+    max-width: 960px;
+    margin: 0 auto;
+}
+
+main h2 {
+    color: #003366;
+}
+
+main img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 16px auto;
+}
+
+/* Chân trang */
+footer {
+    background-color: #222222;
+    color: #ffffff;
+    text-align: center;
+    padding: 16px;
+    font-size: 14px;
+}
+
+/* Tiêu đề h1 */
+h1 {
+    text-align: center;
+    font-family: "Times New Roman", Times, serif;
+    color: #ffffff;
+    margin: 0;
+    padding: 8px 0;
+}
+
+/* Khoảng cách dòng */
+p {
+    line-height: 1.6;
+}
+
+/* ── HW2 STEP 6 ──────────────────────────────
+   Grid class: 2 cột, mỗi cột ~40%
+   ─────────────────────────────────────────── */
+.grid {
+    display: grid;
+    grid-template-columns: 40% 40%;
+    justify-content: center;
+    align-items: start;
+    row-gap: 24px;
+    column-gap: 16px;
+}
+
+/* ── HW2 STEP 7 ──────────────────────────────
+   Descendent selector: chỉ ảnh trong .grid
+   ─────────────────────────────────────────── */
+.grid img {
+    width: 100%;
+    border-radius: 4px;
+}
+
+/* ── HW2 STEP 9 ──────────────────────────────
+   Flex class
+   ─────────────────────────────────────────── */
+.flex {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 16px;
+    margin-top: 16px;
+}
+
+.flex figure {
+    flex: 0 1 200px;
+    text-align: center;
+    margin: 0;
+}
+
+.flex img {
+    width: 100%;
+    border-radius: 4px;
+}
+
+.flex figcaption {
+    font-size: 14px;
+    color: #555;
+    margin-top: 6px;
+}
+
+/* Card dùng trong grid */
+.card {
+    background-color: #ffffff;
+    border: 1px solid #dddddd;
+    border-radius: 4px;
+    padding: 12px;
+}
+
+.card h3 {
+    color: #003366;
+    font-size: 16px;
+    margin: 8px 0 4px;
+}
+
+.card p {
+    font-size: 14px;
+    color: #444444;
+    margin: 0;
+}
+
+/* Form liên hệ */
+form {
+    background-color: #ffffff;
+    padding: 20px;
+    border: 1px solid #cccccc;
+    border-radius: 4px;
+}
+
+form label {
+    display: block;
+    margin-top: 12px;
+    font-weight: bold;
+    color: #003366;
+}
+
+form input,
+form textarea,
+form select {
+    width: 100%;
+    padding: 8px;
+    margin-top: 4px;
+    border: 1px solid #aaaaaa;
+    border-radius: 4px;
+    font-size: 16px;
+    box-sizing: border-box;
+}
+
+form button {
+    margin-top: 16px;
+    background-color: #003366;
+    color: #ffffff;
+    border: none;
+    padding: 10px 24px;
+    font-size: 16px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+form button:hover {
+    background-color: #004080;
+}
+
+form button:disabled {
+    background-color: #888888;
+    cursor: not-allowed;
+}
+
+/* Thông báo form */
+.form-notice {
+    padding: 12px 16px;
+    border-radius: 4px;
+    margin-bottom: 16px;
+    font-size: 16px;
+}
+
+.form-success {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+.form-error {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+/* Bảng */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 16px;
+}
+
+table th {
+    background-color: #003366;
+    color: #ffffff;
+    padding: 10px;
+    text-align: left;
+}
+
+table td {
+    padding: 10px;
+    border-bottom: 1px solid #cccccc;
+}
+
+table tr:nth-child(even) {
+    background-color: #e8e8e8;
+}
